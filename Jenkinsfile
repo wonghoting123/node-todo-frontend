@@ -11,17 +11,21 @@ pipeline {
 	}
 
 	stages {
-		stage('Building image') {
-			docker.withRegistry( 'https://' + registry, registryCredential ) {
-				def buildName = registry + ":$BUILD_NUMBER"
-				newApp = docker.build(buildName)
-				newApp.push()
-			}
+
+		stage('Build') {
+			sh 'npm install'
 		}
-		stage('Registring image') {
-			docker.withRegistry( 'https://' + registry, registryCredential ) {
-				newApp.push 'latest2'
-			}
-		}
+//		stage('Building image') {
+//			docker.withRegistry( 'https://' + registry, registryCredential ) {
+//				def buildName = registry + ":$BUILD_NUMBER"
+//				newApp = docker.build(buildName)
+//				newApp.push()
+//			}
+//		}
+//		stage('Registring image') {
+//			docker.withRegistry( 'https://' + registry, registryCredential ) {
+//				newApp.push 'latest2'
+//			}
+//		}
 	}
 }
