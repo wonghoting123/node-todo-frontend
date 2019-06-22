@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	triggers {
-		pollSCM 'H/15 * * * *'
+		pollSCM 'H/1 * * * *'
 	}
 
 	options {
@@ -13,7 +13,9 @@ pipeline {
 	stages {
 
 		stage('Build') {
-			sh 'npm install'
+			step {
+				sh 'echo 1'
+			}
 		}
 //		stage('Building image') {
 //			docker.withRegistry( 'https://' + registry, registryCredential ) {
