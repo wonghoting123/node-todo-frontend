@@ -16,6 +16,7 @@ pipeline {
 			steps {
 				sh 'echo 1'
 				sh 'echo 2'
+				sh 'echo 3'
 			}
 		}
 //		stage('Building image') {
